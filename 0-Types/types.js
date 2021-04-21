@@ -51,13 +51,15 @@ console.log({} === {});
 console.log({} == {});
 console.log([] == {});
 console.log([] === []);
+console.log({ valueOf: () => 3 } == 3);
+console.log([] == ![]);
+console.log([1, 2, 3] == '1,2,3');
 console.log('0' == 0);
 console.log(true == 1);
 console.log(true == 2);
 console.log(0 == -0);
 console.log(false == 0);
 console.log(false == -0);
-console.log();
 
 
 // TASK
