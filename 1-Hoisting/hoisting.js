@@ -1,43 +1,45 @@
 // // 1
-//
+
+
 // console.log({ johnny, suzie });
 // sayBye();
 // sayHi();
-//
+
 // var johnny = 'Johnny';
 // const suzie = 'Suzie';
-//
+
 // var sayHi = function () {
 //   console.log('Hi!');
 // };
-//
+
 // function sayBye() {
 //   console.log('Bye!');
 // }
-//
+
 // // 2
-//
 // var favoriteFood = 'pizza';
-//
+
 // function foodThoughts() {
+//   // favoriteFood: 'sushi'
 //   console.log('Old favorite food: ' + favoriteFood);
 //   var favoriteFood = 'sushi';
 //   console.log('New favorite food: ' + favoriteFood);
+//   // New favorite food: sushi
 // }
-//
-// foodThoughts(); // ?
-// console.log(favoriteFood); // ?
+
+// foodThoughts();
+// console.log(favoriteFood);
 //
 // // 3
-//
-// console.log(y); // ?
-// console.log(z); // ?
-// console.log(x); // ?
-//
-// y = 'y';
-// let x = 'x';
-// var z = 'z';
-//
+
+console.log(y);
+console.log(z);
+console.log(x);
+
+y = 'y';
+let x = 'x';
+var z = 'z';
+
 // // 4
 //
 // console.log(a); // ?

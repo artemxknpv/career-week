@@ -2,52 +2,45 @@
 //   .then(x => x + 1)
 //   .then(x => { throw x })
 //   .then(x => console.log(x))
-//   .catch(err => console.log(err))   // 2
+//   .catch(err => console.log(err))
 //   .then(x => Promise.resolve(1))
 //   .catch(err => console.log(err))
-//   .then(x => console.log(x))         // 1
+//   .then(x => console.log(x)) // 1
 //
 //
 
 // Логи в каком порядке выведутся и почему?
 //
-// console.log('script start'); // 1
-//
+// console.log('script start');
 // setTimeout(function() {
-//   console.log('setTimeout'); // 5
+//   console.log('setTimeout');
 // }, 0);
-//
 // Promise.resolve().then(function() {
-//   console.log('promise1'); //  3
+//   console.log('promise1');
 // }).then(function() {
-//   console.log('promise2'); //  4
+//   console.log('promise2');
 // });
-//
-// console.log('script end'); // 2
+// console.log('script end');
 
 // ==========================================================================================
 
-// let a;
-// let p = new Promise(function(resolve) {
-//   console.log('TEST A1', a);
-//   a = 25;
-//   setTimeout(() => {
-//     console.log('TEST A2', a);
-//     resolve(a)
-//   }, 1000)
-// });
-//
-// setTimeout(function timeout() {
-//   a = 10;
-//   console.log('TEST A3', a);
-// }, 1000);
-//
-// p.then(function(b){
-//   console.log('TEST A4', a);
-// });
-//
-// console.log('TEST A5', a);
-
+let a;
+let p = new Promise(function (resolve) {
+  console.log('TEST A1', a);
+  a = 25;
+  setTimeout(() => {
+    console.log('TEST A2', a);
+    resolve(a);
+  }, 1000);
+});
+setTimeout(function timeout() {
+  a = 10;
+  console.log('TEST A3', a);
+}, 1000);
+p.then(function (b) {
+  console.log('TEST A4', a);
+});
+console.log('TEST A5', a);
 // ====================================================================================
 
 // setTimeout(() => console.log('1'), 0);
@@ -89,26 +82,26 @@
 
 // ========
 
-function resolveAfter2Seconds(x) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(x); //
-    }, 2000);
-  });
-}
-
-async function add1(x) {
-  const a = await resolveAfter2Seconds(20);
-  const b = await resolveAfter2Seconds(30);
-  return x + a + b;
-}
-
-add1(10).then(console.log);
-
-async function add2(x) {
-  const p_a = resolveAfter2Seconds(20);
-  const p_b = resolveAfter2Seconds(30);
-  return x + await p_a + await p_b;
-}
-
-add2(10).then(console.log);
+// function resolveAfter2Seconds(x) {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve(x); //
+//     }, 2000);
+//   });
+// }
+//
+// async function add1(x) {
+//   const a = await resolveAfter2Seconds(20);
+//   const b = await resolveAfter2Seconds(30);
+//   return x + a + b;
+// }
+//
+// add1(10).then(console.log);
+//
+// async function add2(x) {
+//   const p_a = resolveAfter2Seconds(20);
+//   const p_b = resolveAfter2Seconds(30);
+//   return x + await p_a + await p_b;
+// }
+//
+// add2(10).then(console.log);
