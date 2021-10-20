@@ -1,20 +1,24 @@
 // // 1
 
+// variables:
+// johnny = undefined (var)
+// suzie = undefiend (const)
+// sayHi = undefined (var)
+// sayBye = fn()
+console.log({ johnny, suzie }); // { johnny: undefined, suzie: !!!!ERROR!!!! }
+sayBye();
+sayHi(); // error
 
-// console.log({ johnny, suzie });
-// sayBye();
-// sayHi();
+var johnny = 'Johnny';
+const suzie = 'Suzie';
 
-// var johnny = 'Johnny';
-// const suzie = 'Suzie';
+var sayHi = function () {
+  console.log('Hi!');
+};
 
-// var sayHi = function () {
-//   console.log('Hi!');
-// };
-
-// function sayBye() {
-//   console.log('Bye!');
-// }
+function sayBye() {
+  console.log('Bye!');
+}
 
 // // 2
 // var favoriteFood = 'pizza';
@@ -37,6 +41,7 @@ console.log(z);
 console.log(x);
 
 y = 'y';
+
 let x = 'x';
 var z = 'z';
 

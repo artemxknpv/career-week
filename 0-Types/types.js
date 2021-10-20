@@ -1,23 +1,31 @@
 // TASK
 
-// // console.log(typeof undefined) // ?
-// // console.log(typeof 0) // ?
-// // console.log(typeof true) // ?
-// // console.log(typeof "foo" ) // ?
-// // console.log(typeof {}) // ?
-// // console.log(typeof [] ) // ?
-// // console.log(typeof null) // ?
-// // console.log(typeof function() {}) // ?
-// // console.log(typeof (function() {})()) // ?
-// // console.log(typeof Symbol() ) // ?
-// // console.log(typeof typeof window) // ?
+console.log(typeof undefined) // -> "undefined"
+console.log(typeof 0) // -> "number"
+console.log(typeof true) // -> "boolean"
+console.log(typeof "foo" ) // -> "string"
+console.log(typeof {}) // -> "object"
+console.log(typeof [] ) // -> "object"
+console.log(typeof null) // -> "object"
+console.log(typeof function() {}) // -> "function"
+console.log(typeof (function() {})()) // -> "undefined"
+console.log(typeof Symbol() ) // -> "symbol"
+console.log(typeof typeof window) // -> "string"
 
+// {} - true, [] - false
+function isObject(arg) {
+  return Object.prototype.toString.apply(arg) === '[object Object]'
+}
 // // TASK
 
-// // Различия между стрелочной и обычной функцией
-// // 1. У стрелочных нет this; он определяется лексически;
-// // 2. Синтаксис (implicit return)
-// const print = () => console.log(this);
+// Различия между стрелочной и обычной функцией
+// 1. Хойстинг
+// 2. this
+// 3. Синтаксис
+// 4. Конструктор
+// 5. arguments
+// 6. Дупликация параметров
+
 
 // // 3. Псевдомассив arguments отсутствует в стрелочных функциях
 // function bar() {
@@ -36,22 +44,8 @@
 
 // new Animal() // error
 
-// // 5. Метод попадет в прототип / метод попадет в сам экземпляр класса
-// class Hero {
-//   print() {}
-// }
-
-// const batman = new Hero()
-// batman.print() // from Hero.prototype
-
-// class Hero {
-//   print = function() {};
-// }
-
-// const batman = new Hero()
-// batman.print() // from batman object
-
 // ==============
+
 // Валидация объекта
 
 // function printObject(object) { // object => {}
@@ -95,20 +89,35 @@
 // console.log();
 
 // TASK
-// console.log({} === {});
-// console.log({} == {});
-// console.log([] == {});
-// console.log([] === []);
-// console.log({ valueOf: () => 3 } == 3);
-// console.log([] == ![]);
-// console.log([1, 2, 3] == '1,2,3');
-// console.log('0' == 0);
-// console.log(true == 1);
-// console.log(true == 2);
-// console.log(0 == -0);
-// console.log(false == 0);
-// console.log(false == -0);
+console.log({} === {}); // false
+console.log({} == {}); // false
+console.log([] == {}); // false
+console.log([] === {}); // false
 
+console.log({ valueOf: () => 3 } == 3); // true
+// { valueOf: () => 3 } == 3
+// 3 == 3
+// 3 === 3
+
+console.log([] == ![]); // true
+// [] == false
+// [] == 0
+// '' == 0
+// 0 == 0
+// 0 === 0 -> true
+
+console.log([1, 2, 3] == '1,2,3'); // true
+
+console.log('0' == 0); // true
+console.log(true == 1); // true
+console.log(true == 2); // false
+console.log(0 == -0); // true
+console.log(0 == '-0'); // false
+console.log(false == 0); // true
+console.log(false == -0); // true
+console.log(NaN == false) // false
+console.log(NaN === NaN) // false
+console.log(NaN == NaN) // false
 
 // TASK
 

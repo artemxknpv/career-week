@@ -1,20 +1,18 @@
 // // 1
 
-// {
-//   var i = 0
-//   const log = () => {
-//     console.log(i);
-//   }
-//   setTimeout(log, 100);
-// }
-// i == 0 // -> true
-// {
-//   var i = 1
-//   const log = () => {
-//     console.log(i);
-//   }
-//   setTimeout(log, 100);
-// }
+function scope() {
+  var x = 5
+  if (true) {
+    var x = 3
+    function foo() { }
+  }
+
+  console.log(foo)
+  console.log(x)
+}
+
+const x = 10
+var foo = 6
 
 // {
 //    i = 2
@@ -25,18 +23,11 @@
 // }
 
 // for (let i = 0; i < 3; i++) {
-//   // 1: i == 0
-//   // 2: i == 1
-//   // 3: i == 2
 //   const log = () => {
 //     console.log(i);
 //   }
 //   setTimeout(log, 0);
 // }
-// // i == 3
-// log() // 3
-// log() // 3
-// log() // 3
 
 // //
 
