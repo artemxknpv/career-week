@@ -14,6 +14,49 @@ function scope() {
 const x = 10
 var foo = 6
 
+/* */
+(function immediateA(a) {
+  return (function immediateB(b) {
+    console.log(a); // 0
+  })(1);
+})(0);
+/* */
+
+function createCounter() {
+  let counter = 0;
+
+  const controls = {
+    increase: (n = 1) => counter += n,
+    drop: () => { counter = 0 },
+    get: () => counter,
+  }
+
+  return controls;
+}
+
+const userCounter = createCounter();
+userCounter.increase();
+
+const adCounter = createCounter();
+
+function createIncrement() {
+  let count = 0;
+  function increment() {
+    count++;
+  }
+  let message = `Count is ${count}`;
+  function log() {
+    console.log(message);
+  }
+
+  return [increment, log];
+}
+const [increment, log] = createIncrement();
+increment();
+increment();
+increment();
+log();
+
 // {
 //    i = 2
 //   const log = () => {

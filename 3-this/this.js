@@ -11,8 +11,24 @@ const object = {
   }
 };
 
-//
-// console.log(object.getMessage()); // ?
+
+console.log(object.getMessage()); // "Hello, World!"
+
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  log() {
+    console.log(this === myPoint); // => true
+    setTimeout(() => {
+      console.log(this === myPoint);      // => true
+      console.log(this.x + ':' + this.y); // => '95:165'
+    }, 1000);
+  }
+}
+const myPoint = new Point(95, 165);
+myPoint.log();
 
 // Способы вызова функций:
 // 1. direct invocation / прямой вызов – foo()
@@ -79,28 +95,34 @@ const object = {
 
 
 // 2
-// function Pet(name) {
-//   // this -> Object.create(Pet.prototype)
-//   this.name = name;
-//   this.getName = () => this.name;
-// }
-//
-// const cat = new Pet('Fluffy');
-// console.log(cat.getName()); // What is logged?
-// const { getName } = cat;
-// console.log(getName());     // What is logged?
-//
+function Pet(name) {
+  this.name = name;
+  this.getName = () => this.name;
+}
+
+const cat = new Pet('Fluffy');
+console.log(cat.getName()); // What is logged? -> 'Fluffy'
+const { getName } = cat;
+console.log(getName());     // What is logged? -> 'Fluffy'
+
+
+function foo() {
+  console.log(this)
+}
+
+foo.bind({ prop: 'hello' }).call({ iam: 'batman' })
+
 // // 3
 //
 // const object = {
 //   message: 'Hello, World!',
-//
+
 //   logMessage() {
 //     console.log(this.message); // What is logged?
 //   }
 // };
-//
-// setTimeout(object.logMessage, 1000);
+
+// setTimeout(object.logMessage.bind(object), 1000);
 
 // 4
 
@@ -108,10 +130,12 @@ const object = {
 // const object = {
 //   message: 'Hello, World!'
 // };
-//
+
 // function logMessage() {
 //   console.log(this.message);
 // }
+
+// logMessage.apply(object)
 
 // 5
 //
